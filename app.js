@@ -33,7 +33,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/',(req,res)=>{
-    res.render('index.ejs');
+    let tekst='test digihey';
+    tekst = tekst[0].toUpperCase() + tekst.substring(1);
+    res.send(tekst);
 });
 
 app.post('/hello',(req,res,next)=>{
@@ -48,6 +50,7 @@ app.post('/hello',(req,res,next)=>{
         let neki = JSON.parse(response.body);
         if(neki.cod === 200){
             temp=(neki.main['temp']- 273.15).toFixed(2);
+            city[1]=city[1][0].toUpperCase() +city[1].substring(1)
             responseText = 'Temperature in '+ city[1] +' is '+ temp +'° C';
         }
         else{
