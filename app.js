@@ -47,7 +47,7 @@ app.post('/hello',(req,res,next)=>{
         method: "POST"
     }, (error, response, body)=>{
         let neki = response.body;
-        console.log('RESCOD::',neki.cod)
+        console.log('RESCOD::',neki)
         if(response.body.cod === 200){
             temp=(response.body.main['temp']- 32) * 5 / 9;
             responseText = 'Temperature in '+ city[1] +' is '+ temp +'° C';
