@@ -41,7 +41,7 @@ app.post('/hello',(req,res,next)=>{
     let city = req.body.text;
     city=city.split(" ");
     console.log('CITY::',city[1]);
-    let responseText = "";
+    let responseText = "I don't know what are you talking about";
     request({
         url: "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=80b7ca5e5373805a0d817dfe8d21f930",
         method: "POST"
@@ -58,8 +58,10 @@ app.post('/hello',(req,res,next)=>{
         text: responseText
     };
     if(username!=='slackbot'){
+        console.log('RES::',responseText);
         return res.status(200).json(botPayload);
     }else{
+        console.log('RES::',responseText);
         return res.status(200).end();
     }
 
