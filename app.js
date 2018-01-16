@@ -46,8 +46,8 @@ app.post('/hello',(req,res,next)=>{
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + city[1] + "&appid=80b7ca5e5373805a0d817dfe8d21f930",
         method: "POST"
     }, (error, response, body)=>{
-        let neki = response.body;
-        console.log('RESCOD::',neki)
+        let neki = JSON.parse(response.body);
+        console.log('RESCOD::',neki.cod);
         if(response.body.cod === 200){
             temp=(response.body.main['temp']- 32) * 5 / 9;
             responseText = 'Temperature in '+ city[1] +' is '+ temp +'° C';
