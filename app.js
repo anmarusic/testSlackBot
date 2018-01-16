@@ -47,7 +47,7 @@ app.post('/hello',(req,res,next)=>{
     }, (error, response, body)=>{
         let neki = JSON.parse(response.body);
         if(neki.cod === 200){
-            temp=((neki.main['temp']- 32) * 5 / 9).toFixed(2);
+            temp=(neki.main['temp']- 273.15).toFixed(2);
             responseText = 'Temperature in '+ city[1] +' is '+ temp +'° C';
         }
         else{
