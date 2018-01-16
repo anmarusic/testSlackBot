@@ -40,16 +40,15 @@ app.post('/hello',(req,res,next)=>{
     let username = req.body.user_name;
     let city = req.body.text;
     city=city.split(" ");
-    console.log('CITY::',city[1]);
     let responseText = "I don't know what are you talking about";
     request({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + city[1] + "&appid=80b7ca5e5373805a0d817dfe8d21f930",
         method: "POST"
     }, (error, response, body)=>{
         let neki = JSON.parse(response.body);
-        console.log('RESCOD::',neki.cod);
         if(neki.cod === 200){
             temp=(neki.main['temp']- 32) * 5 / 9;
+            city[1].charAt(0) = city[1].charAt(0).toUpperCase();
             responseText = 'Temperature in '+ city[1] +' is '+ temp +'° C';
         }
         else{
@@ -59,10 +58,8 @@ app.post('/hello',(req,res,next)=>{
             text: responseText
         };
         if(username!=='slackbot'){
-            console.log('RES::',responseText);
             return res.status(200).json(botPayload);
         }else{
-            console.log('RES::',responseText);
             return res.status(200).end();
         }
     });
