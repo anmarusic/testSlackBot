@@ -38,7 +38,7 @@ app.get('/',(req,res)=>{
     res.send(tekst);
 });
 
-app.post('/hello',(req,res,next)=>{
+app.post('/weather',(req,res,next)=>{
     let username = req.body.user_name;
     let city = req.body.text;
     city=city.split(" ");
