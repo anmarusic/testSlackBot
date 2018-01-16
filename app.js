@@ -49,7 +49,7 @@ app.post('/hello',(req,res,next)=>{
         if(neki.cod === 200){
             temp=(neki.main['temp']- 32) * 5 / 9;
             city[1].charAt(0) = city[1].charAt(0).toUpperCase();
-            responseText = 'Temperature in '+ city[1] +' is '+ temp +'° C';
+            responseText = 'Temperature in '+ city[1] +' is '+ temp.toFixed(2) +'° C';
         }
         else{
             responseText = 'I have never heard about that city';
