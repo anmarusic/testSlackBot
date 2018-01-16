@@ -53,17 +53,17 @@ app.post('/hello',(req,res,next)=>{
         else{
             responseText = 'I have never heard about that city';
         }
+        let botPayload = {
+            text: responseText
+        };
+        if(username!=='slackbot'){
+            console.log('RES::',responseText);
+            return res.status(200).json(botPayload);
+        }else{
+            console.log('RES::',responseText);
+            return res.status(200).end();
+        }
     });
-    let botPayload = {
-        text: responseText
-    };
-    if(username!=='slackbot'){
-        console.log('RES::',responseText);
-        return res.status(200).json(botPayload);
-    }else{
-        console.log('RES::',responseText);
-        return res.status(200).end();
-    }
 
 });
 
